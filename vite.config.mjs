@@ -11,7 +11,7 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: './', // necessário para Vercel encontrar assets corretamente
+  base: '/', // necessário para Vercel encontrar assets corretamente
   build: {
     outDir: 'dist',
   },
