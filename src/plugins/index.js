@@ -1,17 +1,11 @@
-/**
- * plugins/index.js
- *
- * Automatically included in `./src/main.js`
- */
+import { createVuetify } from 'vuetify'
+import 'vuetify/styles'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
-// Plugins
-import vuetify from './vuetify'
-import pinia from '@/stores'
-import router from '@/router'
-
-export function registerPlugins (app) {
-  app
-    .use(vuetify)
-    .use(router)
-    .use(pinia)
-}
+export default createVuetify({
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: { mdi },
+  },
+})
