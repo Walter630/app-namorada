@@ -1,24 +1,19 @@
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Fonts from 'unplugin-fonts/vite'
-import Layouts from 'vite-plugin-vue-layouts-next'
 import Vue from '@vitejs/plugin-vue'
-import VueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import Pages from 'vite-plugin-pages'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: '/app-amor/', // necessário para Vercel encontrar assets corretamente
+  base: '/', // necessário para Vercel encontrar assets corretamente
   build: {
     outDir: 'dist',
   },
   plugins: [
-    VueRouter(),
-    Layouts(),
-    Pages(),
+    Pages(), // Mantendo apenas o Pages para geração automática de rotas
     Vue({
       template: { transformAssetUrls },
     }),
@@ -42,7 +37,6 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
-        VueRouterAutoImports,
         {
           pinia: ['defineStore', 'storeToRefs'],
         },
@@ -56,10 +50,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [
       'vuetify',
-      'vue-router',
-      'unplugin-vue-router/runtime',
-      'unplugin-vue-router/data-loaders',
-      'unplugin-vue-router/data-loaders/basic',
+      'vue-router', // Se não precisar de vue-router diretamente, remova isso também
     ],
   },
   define: { 'process.env': {} },
