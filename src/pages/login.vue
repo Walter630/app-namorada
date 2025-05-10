@@ -6,15 +6,13 @@ meta:
 <template>
   <v-app-bar></v-app-bar>
 
-  <v-main
-    style="margin-top: 30px; align-content: center; margin-left: 20%; border-radius: 60px"
-  >
+  <v-main style="margin-top: 30px; align-content: center; border-radius: 60px">
     <div v-if="carregando" class="carregando">
       <div class="heart"></div>
       <br />
       <p style="text-align: center; font-size: 40px">Carregando com amor...</p>
     </div>
-    <v-card v-else style="text-align: center; width: 600px; align-items: center">
+    <v-card v-else style="text-align: center; align-items: center">
       <v-card-title primary-title> Responda </v-card-title>
       <v-card-text text-h2> Nome </v-card-text>
       <v-text-field v-model="nome" name="name" label="Nome" id="id"></v-text-field>
